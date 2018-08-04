@@ -154,7 +154,7 @@
                                         </p>
                                         <p class="txt-box">
                                             应付总金额：￥
-                                            <label id="totalAmount" class="price">{{orderInfo.goodsAmount}}</label>
+                                            <label id="totalAmount" class="price">{{orderInfo.goodsAmount+orderInfo.expressMoment}}</label>
                                         </p>
                                         <p class="btn-box">
                                             <a class="btn button" href="/cart.html">返回购物车</a>
@@ -300,8 +300,8 @@ export default {
         default:
           break;
       }
-      this.orderInfo.goodsAmount =
-        this.totalPrice + this.orderInfo.expressMoment;
+      //   this.orderInfo.goodsAmount =
+      //     this.totalPrice + this.orderInfo.expressMoment;
     },
     // 提交数据之前的最后一次校验
     submitForm(formName) {
@@ -355,8 +355,7 @@ export default {
         // 赋值给页面中的数据
         this.goodsList = response.data.message;
         // 总金额
-        this.orderInfo.goodsAmount =
-          this.totalPrice + this.orderInfo.expressMoment;
+        this.orderInfo.goodsAmount = this.totalPrice;
         // 赋值属性
         this.orderInfo.goodsids = this.$route.params.ids;
         // 购买的商品 跟 数量需要计算
